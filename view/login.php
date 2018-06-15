@@ -9,7 +9,7 @@
 			$user = $userDAO->login($_POST["username"], md5($_POST["password"]));
 			if($user != null){
 				$_SESSION["logged"] = true;
-				$_SESSION["accessprofile"] = "admin";
+				$_SESSION["accessprofile"] = $user->getStrAccessprofile();
 				echo "<script>location.href='index.php'</script>";
 			}else{
 				echo "Wrong username or password!"

@@ -19,7 +19,7 @@ class user
         $this->str_username = $str_username;
         $this->str_password = $str_password;
         $this->str_accessprofile = $str_accessprofile;
-        $hits->str_email = $str_email;
+        $this->str_email = $str_email;
     }
 
     /**
