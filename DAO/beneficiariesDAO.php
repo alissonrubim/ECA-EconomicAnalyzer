@@ -1,8 +1,8 @@
 <?php
-class beneficiariesDAO
-{
-    public function count()
-    {
+
+class beneficiariesDAO {
+
+    public function count() {
         global $pdo;
         try {
             $statement = $pdo->prepare("SELECT COUNT(*) as total FROM tb_beneficiaries");
@@ -17,7 +17,7 @@ class beneficiariesDAO
         }
     }
 
-    public function totalPerMonth(){
+    public function totalPerMonth() {
         global $pdo;
         $estados = array();
         $dados = array();
@@ -33,8 +33,8 @@ order by s.str_name");
             if ($statement->execute()) {
                 $rs = $statement->fetchAll(PDO::FETCH_OBJ);
                 foreach ($rs as $var) {
-                    array_push($estados,  $var->str_name);
-                    array_push($dados,  $var->total);
+                    array_push($estados, $var->str_name);
+                    array_push($dados, $var->total);
                 }
             } else {
                 throw new PDOException("Erro: Não foi possível executar a declaração sql");
@@ -45,8 +45,7 @@ order by s.str_name");
         return array($estados, $dados);
     }
 
-    public function remover($beneficiaries)
-    {
+    public function remover($beneficiaries) {
         global $pdo;
         try {
             $statement = $pdo->prepare("DELETE FROM beneficiaries WHERE id_beneficiaries = :id");
@@ -61,11 +60,10 @@ order by s.str_name");
         }
     }
 
-    public function salvar($beneficiaries)
-    {
+    public function salvar($beneficiaries) {
         global $pdo;
         try {
-            if ($beneficiaries->getIdBeneficiaries() != "") { 
+            if ($beneficiaries->getIdBeneficiaries() != "") {
                 $statement = $pdo->prepare("UPDATE tb_beneficiaries SET str_nis=:nis, str_name_person=:name WHERE id_beneficiaries = :id;");
                 $statement->bindValue(":id", $beneficiaries->getIdBeneficiaries());
             } else {
@@ -86,10 +84,9 @@ order by s.str_name");
         } catch (PDOException $erro) {
             return "Erro: " . $erro->getMessage();
         }
-    }    
-    
-    public function atualizar($beneficiaries)
-    {
+    }
+
+    public function atualizar($beneficiaries) {
         global $pdo;
         try {
             $statement = $pdo->prepare("SELECT id_beneficiaries, str_nis, str_name_person FROM tb_beneficiaries WHERE id_beneficiaries = :id");
@@ -108,8 +105,7 @@ order by s.str_name");
         }
     }
 
-
-    public function getRelatorio01(){
+    public function getRelatorio01() {
         global $pdo;
         $beneficiariesLista = array();
         try {
@@ -121,7 +117,7 @@ order by s.str_name");
                     $a->setIdBeneficiaries($var->id_beneficiaries);
                     $a->setStrNis($var->str_nis);
                     $a->setStrNamePerson($var->str_name_person);
-                    array_push($beneficiariesLista, $a );
+                    array_push($beneficiariesLista, $a);
                 }
             } else {
                 throw new PDOException("Erro: Não foi possível executar a declaração sql");
@@ -132,9 +128,7 @@ order by s.str_name");
         return $beneficiariesLista;
     }
 
-
-    public function tabelapaginada()
-    {
+    public function tabelapaginada() {
 
         //carrega o banco
         global $pdo;
@@ -168,7 +162,7 @@ order by s.str_name");
         $primeira_pagina = 1;
 
         /* Cálcula qual será a última página */
-        $ultima_pagina = ceil($valor->total_registros / QTDE_REGISTROS);       
+        $ultima_pagina = ceil($valor->total_registros / QTDE_REGISTROS);
 
         /* Cálcula qual será a página anterior em relação a página atual em exibição */
         $pagina_anterior = ($pagina_atual > 1) ? $pagina_atual - 1 : 0;
@@ -231,10 +225,6 @@ order by s.str_name");
             echo "<p class='bg-danger'>Nenhum registro foi encontrado!</p>
      ";
         endif;
-
     }
 
-
 }
-
-
