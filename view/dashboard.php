@@ -13,7 +13,10 @@
                             <div class="col-xs-7">
                                 <div class="numbers">
                                     <p>Payments</p>
-                                    000
+                                    <?php
+                                        $paymentsDAO = new paymentsDAO();
+                                        echo $paymentsDAO->count();
+                                    ?>
                                 </div>
                             </div>
                         </div>

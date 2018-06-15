@@ -16,7 +16,7 @@
 
                     </div>
                     <div class='content table-responsive'>
-						<a href="?p=report_1">
+						<a href="reports/report_1.php">
 						 	•	Relatório PDF com a lista de todos os beneficiários e seus respectivos dados em ordem alfabética;
 						</a>
 						<br>
