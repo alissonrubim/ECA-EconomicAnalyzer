@@ -22,11 +22,11 @@
             return $userResult;
         }
 
-        /*public function remover($files)
+        public function remover($files)
         {
             global $pdo;
             try {
-                $statement = $pdo->prepare("DELETE FROM tb_files WHERE id_file = :id");
+                $statement = $pdo->prepare("DELETE FROM tb_users WHERE id_user = :id");
                 $statement->bindValue(":id", $files->getIdFile());
                 if ($statement->execute()) {
                     return "Registo foi excluído com êxito";
@@ -43,10 +43,10 @@
             global $pdo;
             try {
                 if ($files->getIdFile() != "") {
-                    $statement = $pdo->prepare("UPDATE tb_files SET str_name_file=:name_file, str_month=:month, str_year=:year WHERE id_file = :id;");
+                    $statement = $pdo->prepare("UPDATE tb_users SET str_name_file=:name_file, str_month=:month, str_year=:year WHERE id_user = :id;");
                     $statement->bindValue(":id", $files->getIdFile());
                 } else {
-                    $statement = $pdo->prepare("INSERT INTO tb_files (str_name_file, str_month, str_year) VALUES (:name_file, :month, :year)");
+                    $statement = $pdo->prepare("INSERT INTO tb_users (str_name_file, str_month, str_year) VALUES (:name_file, :month, :year)");
                 }
                 $statement->bindValue(":name_file", $files->getStrNameFile());
                 $statement->bindValue(":month", $files->getStrMonth());
@@ -69,7 +69,7 @@
         {
             global $pdo;
             try {
-                $statement = $pdo->prepare("SELECT id_file, str_name_file, str_month, str_year FROM tb_files WHERE id_file = :id");
+                $statement = $pdo->prepare("SELECT id_file, str_name_file, str_month, str_year FROM tb_users WHERE id_file = :id");
                 $statement->bindValue(":id", $files->getIdFile());
                 if ($statement->execute()) {
                     $rs = $statement->fetch(PDO::FETCH_OBJ);
@@ -100,12 +100,12 @@
             
             $linha_inicial = ($pagina_atual - 1) * QTDE_REGISTROS;
             
-            $sql = "SELECT id_file, str_name_file, str_month, str_year FROM tb_files LIMIT {$linha_inicial}, " . QTDE_REGISTROS;
+            $sql = "SELECT id_user, str_username, str_accessprofile, str_email FROM tb_users LIMIT {$linha_inicial}, " . QTDE_REGISTROS;
             $statement = $pdo->prepare($sql);
             $statement->execute();
             $dados = $statement->fetchAll(PDO::FETCH_OBJ);
             
-            $sqlContador = "SELECT COUNT(*) AS total_registros FROM tb_files";
+            $sqlContador = "SELECT COUNT(*) AS total_registros FROM tb_users";
             $statement = $pdo->prepare($sqlContador);
             $statement->execute();
             $valor = $statement->fetch(PDO::FETCH_OBJ);
@@ -125,21 +125,21 @@
             <thead>
             <tr class='active'>
             <th>ID</th>
-            <th>Nome Arquiv Região</th>  
-            <th>Mês</th>
-            <th>Ano</th>
+            <th>Usuario</th>  
+            <th>Permissao</th>
+            <th>Email</th>
             <th colspan='2'>Ações</th>
             </tr>
             </thead>
             <tbody>";
                 foreach ($dados as $var):
             echo "<tr>            
-            <td>$var->id_file</td>
-            <td>$var->str_name_file</td>
-            <td>$var->str_month</td>
-            <td>$var->str_year</td>
-            <td><a href='?p=city&act=upd&id=$var->id_file'><i class='ti-reload'></i></a></td>
-            <td><a href='?p=city&act=del&id=$var->id_file'><i class='ti-close'></i></a></td>
+            <td>$var->id_user</td>
+            <td>$var->str_username</td>
+            <td>$var->str_accessprofile</td>
+            <td>$var->str_email</td>
+            <td><a href='?p=users&act=upd&id=$var->id_user'><i class='ti-reload'></i></a></td>
+            <td><a href='?p=users&act=del&id=$var->id_user'><i class='ti-close'></i></a></td>
             </tr>";
                 endforeach;
                 echo "
@@ -147,24 +147,24 @@
             </table>
 
             <div class='box-paginacao'>
-           <a class='box-navegacao  $exibir_botao_inicio' href='$endereco?p=city&page=$primeira_pagina' title='Primeira Página'>Primeira</a>
-           <a class='box-navegacao $exibir_botao_inicio' href='$endereco?p=city&page=$pagina_anterior' title='Página Anterior'>Anterior</a>
+           <a class='box-navegacao  $exibir_botao_inicio' href='$endereco?p=users&page=$primeira_pagina' title='Primeira Página'>Primeira</a>
+           <a class='box-navegacao $exibir_botao_inicio' href='$endereco?p=users&page=$pagina_anterior' title='Página Anterior'>Anterior</a>
     ";
 
                 
                 for ($i = $range_inicial; $i <= $range_final; $i++):
                     $destaque = ($i == $pagina_atual) ? 'destaque' : '';
-                    echo "<a class='box-numero $destaque' href='$endereco?p=city&page=$i'>$i</a>";
+                    echo "<a class='box-numero $destaque' href='$endereco?p=users&page=$i'>$i</a>";
                 endfor;
 
-                echo "<a class='box-navegacao $exibir_botao_final' href='$endereco?p=city&page=$proxima_pagina' title='Próxima Página'>Próxima</a>
-           <a class='box-navegacao $exibir_botao_final' href='$endereco?p=city&page=$ultima_pagina' title='Última Página'>Último</a>
+                echo "<a class='box-navegacao $exibir_botao_final' href='$endereco?p=users&page=$proxima_pagina' title='Próxima Página'>Próxima</a>
+           <a class='box-navegacao $exibir_botao_final' href='$endereco?p=users&page=$ultima_pagina' title='Última Página'>Último</a>
          </div>";
             else:
                 echo "<p class='bg-danger'>Nenhum registro foi encontrado!</p>
          ";
             endif;
 
-        }*/
+        }
     }
     ?>

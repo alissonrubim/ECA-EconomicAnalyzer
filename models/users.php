@@ -6,7 +6,7 @@
  * Time: 20:12
  */
 
-class user
+class users
 {
     public $id_user, $str_username, $str_password, $str_accessprofile, $str_email;
 
