@@ -90,7 +90,7 @@ class cityDAO
         $linha_inicial = ($pagina_atual - 1) * QTDE_REGISTROS;
 
         /* Instrução de consulta para paginação com MySQL */
-        $sql = "SELECT id_city, str_name_city, str_cod_siafi_city, tb_state_id_state FROM tb_city LIMIT {$linha_inicial}, " . QTDE_REGISTROS;
+        $sql = "select city.id_city, city.str_name_city, city.str_cod_siafi_city, state.str_name as name_state from tb_city as city inner join tb_state as state on city.tb_state_id_state = state.id_state LIMIT {$linha_inicial}, " . QTDE_REGISTROS;
         $statement = $pdo->prepare($sql);
         $statement->execute();
         $dados = $statement->fetchAll(PDO::FETCH_OBJ);
@@ -139,11 +139,11 @@ class cityDAO
      </thead>
      <tbody>";
             foreach ($dados as $var):
-                echo "<tr>
+                echo "<tr>                    
         <td>$var->id_city</td>
         <td>$var->str_name_city</td>
         <td>$var->str_cod_siafi_city</td>
-        <td>$var->tb_state_id_state</td>            
+        <td>$var->name_state</td>            
         <td><a href='?p=city&act=upd&id=$var->id_city'><i class='ti-reload'></i></a></td>
         <td><a href='?p=city&act=del&id=$var->id_city'><i class='ti-close'></i></a></td>
        </tr>";
