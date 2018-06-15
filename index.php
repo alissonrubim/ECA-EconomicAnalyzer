@@ -1,6 +1,5 @@
 <?php
 	session_start();
-
 	
 	require_once "classes/template.php";
 	require_once "DAO/conexao.php";
@@ -35,6 +34,8 @@
 
 		$template->footer();
 	}else{
+		$template = new Template();
+	    $template->header();
 		include "view/".$page.".php";
 	}
 ?>
