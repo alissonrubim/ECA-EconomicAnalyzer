@@ -3,7 +3,6 @@
 require_once "conexao.php";
 require_once "models/state.php";
 
-
 class stateDAO
 {
     public function remover($state)
@@ -18,11 +17,11 @@ class stateDAO
                 throw new PDOException("Erro: Não foi possível executar a declaração sql");
             }
         } catch (PDOException $erro) {
-            return "Erro: ".$erro->getMessage();
+            return "Erro: " . $erro->getMessage();
         }
     }
-    
-    public function salvar($state){
+
+    public function salvar($state) {
         global $pdo;
         try {
             if ($state->getIdState() != "") {
@@ -31,9 +30,9 @@ class stateDAO
             } else {
                 $statement = $pdo->prepare("INSERT INTO tb_state (str_uf, str_name, tb_region_id_region) VALUES (:uf, :name, :id_region)");
             }
-            $statement->bindValue(":str_uf",$state->getStrUf());
-            $statement->bindValue(":str_name",$state->getStrName());
-            $statement->bindValue(":id_region",$state->getTbRegionIdRegion());
+            $statement->bindValue(":str_uf", $state->getStrUf());
+            $statement->bindValue(":str_name", $state->getStrName());
+            $statement->bindValue(":id_region", $state->getTbRegionIdRegion());
             if ($statement->execute()) {
                 if ($statement->rowCount() > 0) {
                     return "Dados cadastrados com sucesso!";
@@ -47,7 +46,8 @@ class stateDAO
             return " Erro: " . $erro->getMessage();
         }
     }
-    public function atualizar($state){
+
+    public function atualizar($state) {
         global $pdo;
         try {
             $statement = $pdo->prepare("SELECT id_state, str_uf, str_name, tb_region_id_region FROM tb_state WHERE id_state = :id");
@@ -63,40 +63,39 @@ class stateDAO
                 throw new PDOException("Erro: Não foi possível executar a declaração sql");
             }
         } catch (PDOException $erro) {
-            return "Erro: ".$erro->getMessage();
+            return "Erro: " . $erro->getMessage();
         }
     }
-        
-        public function tabelapaginada()
-    {
-        
-        global $pdo;        
+
+    public function tabelapaginada() {
+
+        global $pdo;
         $endereco = $_SERVER ['PHP_SELF'];
-        
+
         define('QTDE_REGISTROS', 10);
         define('RANGE_PAGINAS', 2);
-        
+
         $pagina_atual = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
-        
+
         $linha_inicial = ($pagina_atual - 1) * QTDE_REGISTROS;
-        
+
         $sql = "select state.id_state, state.str_uf, state.str_name, region.str_name_region from tb_state as state inner join tb_region as region on state.tb_region_id_region = region.id_region LIMIT {$linha_inicial}, " . QTDE_REGISTROS;
         $statement = $pdo->prepare($sql);
         $statement->execute();
         $dados = $statement->fetchAll(PDO::FETCH_OBJ);
-        
+
         $sqlContador = "SELECT COUNT(*) AS total_registros FROM tb_state";
         $statement = $pdo->prepare($sqlContador);
         $statement->execute();
         $valor = $statement->fetch(PDO::FETCH_OBJ);
-        
+
         $primeira_pagina = 1;
-        $ultima_pagina = ceil($valor->total_registros / QTDE_REGISTROS);        
-        $pagina_anterior = ($pagina_atual > 1) ? $pagina_atual - 1 : 0;        
-        $proxima_pagina = ($pagina_atual < $ultima_pagina) ? $pagina_atual + 1 : 0;        
-        $range_inicial = (($pagina_atual - RANGE_PAGINAS) >= 1) ? $pagina_atual - RANGE_PAGINAS : 1;        
-        $range_final = (($pagina_atual + RANGE_PAGINAS) <= $ultima_pagina) ? $pagina_atual + RANGE_PAGINAS : $ultima_pagina;        
-        $exibir_botao_inicio = ($range_inicial < $pagina_atual) ? 'mostrar' : 'esconder';        
+        $ultima_pagina = ceil($valor->total_registros / QTDE_REGISTROS);
+        $pagina_anterior = ($pagina_atual > 1) ? $pagina_atual - 1 : 0;
+        $proxima_pagina = ($pagina_atual < $ultima_pagina) ? $pagina_atual + 1 : 0;
+        $range_inicial = (($pagina_atual - RANGE_PAGINAS) >= 1) ? $pagina_atual - RANGE_PAGINAS : 1;
+        $range_final = (($pagina_atual + RANGE_PAGINAS) <= $ultima_pagina) ? $pagina_atual + RANGE_PAGINAS : $ultima_pagina;
+        $exibir_botao_inicio = ($range_inicial < $pagina_atual) ? 'mostrar' : 'esconder';
         $exibir_botao_final = ($range_final > $pagina_atual) ? 'mostrar' : 'esconder';
 
         if (!empty($dados)):
@@ -113,7 +112,7 @@ class stateDAO
         </thead>
         <tbody>";
             foreach ($dados as $var):
-        echo "<tr>            
+                echo "<tr>            
         <td>$var->id_state</td>
         <td>$var->str_uf</td>
         <td>$var->str_name</td>
@@ -131,7 +130,7 @@ class stateDAO
        <a class='box-navegacao $exibir_botao_inicio' href='$endereco?p=city&page=$pagina_anterior' title='Página Anterior'>Anterior</a>
 ";
 
-            
+
             for ($i = $range_inicial; $i <= $range_final; $i++):
                 $destaque = ($i == $pagina_atual) ? 'destaque' : '';
                 echo "<a class='box-numero $destaque' href='$endereco?p=city&page=$i'>$i</a>";
@@ -144,6 +143,6 @@ class stateDAO
             echo "<p class='bg-danger'>Nenhum registro foi encontrado!</p>
      ";
         endif;
+    }
 
-    }
-    }
+}
