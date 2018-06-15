@@ -19,27 +19,24 @@
 	}
 ?>
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
+<style type="text/css">
+	body{
+		background: #f3f2f2;
+	}
+</style>
+                <div class="card" style="margin: 30px auto; max-width: 300px;">
                     <div class="content">
                         <div class="row">
-                            <div class="col-xs-8">
+                            <div class="col-xs-12">
 								<form method="POST" action="index.php?p=login">
-									<label>User</label>
-									<input type="text" name="username" required="required">
-									<label>Password</label>
-									<input type="password" name="password" required="required">
-									<input type="submit" name="Send">
+									<div><label>User</label></div>
+									<div><input type="text" name="username" required="required"></div>
+									<div><label>Password</label></div>
+									<div><input type="password" name="password" required="required" style="margin-bottom: 30px;"></div>
+									<div><input type="submit" name="Send" class="btn" value="Entrar" style="float:right;"></div>
 								</form>
 								<a href="">Recovery password</a>
 							</div>
 						</div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
