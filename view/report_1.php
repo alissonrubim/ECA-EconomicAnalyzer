@@ -6,9 +6,9 @@
  * Time: 19:34
  */
 
-include_once "assets/php/mpdf/mpdf.php";
-include_once "models/beneficiaries.php";
-include_once "DAO/beneficiariesDAO.php";
+require_once "../assets/php/mpdf/mpdf.php";
+require_once "models/beneficiaries.php";
+require_once "DAO/beneficiariesDAO.php";
 
 
 $dao = new beneficiariesDAO();

@@ -131,6 +131,12 @@ class Template
                         <p>Programs</p>
                     </a>
                 </li>
+                <li>
+                    <a href=\"index.php?p=reports\">
+                        <i class=\"ti-view-list-alt\"></i>
+                        <p>Reports</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>";

@@ -57,7 +57,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
                     </div>
                     <div class='content table-responsive'>
 
-                        <form action="?act=save&id=" method="POST" name="form1">
+                        <form action="?p=action&act=save&id=" method="POST" name="form1">
                             <hr>
                             <i class="ti-save"></i>
                             <input type="hidden" name="id" value="

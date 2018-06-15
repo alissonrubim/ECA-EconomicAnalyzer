@@ -141,8 +141,8 @@ class functionsDAO
         <td>$var->id_functions</td>
         <td>$var->str_cod_functions</td>
         <td>$var->str_name_functions</td>
-        <td><a href='?act=upd&id=$var->id_functions'><i class='ti-reload'></i></a></td>
-        <td><a href='?act=del&id=$var->id_functions'><i class='ti-close'></i></a></td>
+        <td><a href='?p=city&act=upd&id=$var->id_functions'><i class='ti-reload'></i></a></td>
+        <td><a href='?p=city&act=del&id=$var->id_functions'><i class='ti-close'></i></a></td>
        </tr>";
             endforeach;
             echo "
@@ -150,18 +150,18 @@ class functionsDAO
      </table>
 
      <div class='box-paginacao'>
-       <a class='box-navegacao  $exibir_botao_inicio' href='$endereco?page=$primeira_pagina' title='Primeira Página'>Primeira</a>
-       <a class='box-navegacao $exibir_botao_inicio' href='$endereco?page=$pagina_anterior' title='Página Anterior'>Anterior</a>
+       <a class='box-navegacao  $exibir_botao_inicio' href='$endereco?p=city&page=$primeira_pagina' title='Primeira Página'>Primeira</a>
+       <a class='box-navegacao $exibir_botao_inicio' href='$endereco?p=city&page=$pagina_anterior' title='Página Anterior'>Anterior</a>
 ";
 
             /* Loop para montar a páginação central com os números */
             for ($i = $range_inicial; $i <= $range_final; $i++):
                 $destaque = ($i == $pagina_atual) ? 'destaque' : '';
-                echo "<a class='box-numero $destaque' href='$endereco?page=$i'>$i</a>";
+                echo "<a class='box-numero $destaque' href='$endereco?p=city&page=$i'>$i</a>";
             endfor;
 
-            echo "<a class='box-navegacao $exibir_botao_final' href='$endereco?page=$proxima_pagina' title='Próxima Página'>Próxima</a>
-       <a class='box-navegacao $exibir_botao_final' href='$endereco?page=$ultima_pagina' title='Última Página'>Último</a>
+            echo "<a class='box-navegacao $exibir_botao_final' href='$endereco?p=city&page=$proxima_pagina' title='Próxima Página'>Próxima</a>
+       <a class='box-navegacao $exibir_botao_final' href='$endereco?p=city&page=$ultima_pagina' title='Última Página'>Último</a>
      </div>";
         else:
             echo "<p class='bg-danger'>Nenhum registro foi encontrado!</p>
