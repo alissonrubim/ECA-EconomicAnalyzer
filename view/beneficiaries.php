@@ -1,45 +1,36 @@
 <?php
 
 
-require_once "DAO/cityDAO.php";
-require_once "models/city.php";
-require_once "classes/template.php";
+require_once "DAO/beneficiariesDAO.php";
+require_once "models/beneficiaries.php";
 
-$template = new template();
-$object = new cityDAO();
-
-$template->header();
-$template->sidebar();
-$template->mainpanel();
+$object = new beneficiariesDAO();
 
 
 // Verificar se foi enviando dados via POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = (isset($_POST["id"]) && $_POST["id"] != null) ? $_POST["id"] : "";
+    $nis = (isset($_POST["nis"]) && $_POST["nis"] != null) ? $_POST["nis"] : "";
     $name = (isset($_POST["name"]) && $_POST["name"] != null) ? $_POST["name"] : "";
-    $cod_siafi = (isset($_POST["cod_siafi"]) && $_POST["cod_siafi"] != null) ? $_POST["cod_siafi"] : "";
-    $id_state = (isset($_POST["id_state"]) && $_POST["id_state"] != null) ? $_POST["id_state"] : "";
 } else if (!isset($id)) {
     // Se não se não foi setado nenhum valor para variável $id
-    $id = (isset($_GET["id"]) && $_GET["id"] != null) ? $_GET["id"] : "";    
+    $id = (isset($_GET["id"]) && $_GET["id"] != null) ? $_GET["id"] : "";
+    $nis = NULL;
     $name = NULL;
-    $cod_siafi = NULL;
-    $id_state = NULL;
 }
 
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id != "") {
 
-    $city = new city($id, '', '', '');
+    $beneficiaries = new beneficiaries($id, '', '');
 
-    $resultado = $object->atualizar($city);
-    $name = $resultado->getStrNameCity();
-    $cod_siafi = $resultado->getStrCodSiafiCity();
-    $id_state = $resultado->getTbStateIdState();
+    $resultado = $object->atualizar($beneficiaries);
+    $nis = $resultado->getStrNis();
+    $nome = $resultado->getStrNamePerson();
 }
 
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id != "") {
 
-    $city = new city($id, '', '', '');
+    $beneficiaries = new beneficiaries($id, '', '');
 
     $resultado = $object->atualizar($beneficiaries);
     $nis = $resultado->getStrNis();
@@ -47,7 +38,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id != "") {
 }
 
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
-    $city = new city($id, '', '', '');
+    $beneficiaries = new beneficiaries($id, '', '');
     $msg = $object->remover($beneficiaries);
     $id = null;
 }
@@ -103,9 +94,3 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
         </div>
     </div>
 </div>
-
-<?php
-$template->footer();
-?>
-
-

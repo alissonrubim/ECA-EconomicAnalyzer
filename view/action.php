@@ -3,14 +3,8 @@
 
 require_once "DAO/actionDAO.php";
 require_once "models/action.php";
-require_once "classes/template.php";
 
-$template = new template();
 $object = new actionDAO();
-
-$template->header();
-$template->sidebar();
-$template->mainpanel();
 
 
 // Verificar se foi enviando dados via POST
@@ -100,9 +94,3 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
         </div>
     </div>
 </div>
-
-<?php
-$template->footer();
-
-
-

@@ -2,9 +2,7 @@
 
 require_once "DAO/beneficiariesDAO.php";
 require_once "models/beneficiaries.php";
-require_once "classes/template.php";
 
-$template = new template();
 $object = new beneficiariesDAO();
 
 $template->header();

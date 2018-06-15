@@ -96,37 +96,37 @@ class Template
 
             <ul class=\"nav\">
                 <li class=\"active\">
-                    <a href=\"dashboard.php\">
+                    <a href=\"index.php?p=dashboard\">
                         <i class=\"ti-panel\"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class=\"active\">
-                    <a href=\"action.php\">
+                    <a href=\"index.php?p=action\">
                         <i class=\"ti-user\"></i>
                         <p>Action</p>
                     </a>
                 </li>
                 <li class=\"active\">
-                    <a href=\"beneficiaries.php\">
+                    <a href=\"index.php?p=beneficiaries\">
                         <i class=\"ti-user\"></i>
                         <p>Beneficiaries</p>
                     </a>
                 </li>
                 <li class=\"active\">
-                    <a href=\"city.php\">
+                    <a href=\"index.php?p=city\">
                         <i class=\"ti-user\"></i>
                         <p>City</p>
                     </a>
                 </li>
                 <li class=\"active\">
-                    <a href=\"files.php\">
+                    <a href=\"index.php?p=files\">
                         <i class=\"ti-user\"></i>
                         <p>Files</p>
                     </a>
                 </li>
                 <li>
-                    <a href=\"programs.php\">
+                    <a href=\"index.php?p=programs\">
                         <i class=\"ti-view-list-alt\"></i>
                         <p>Programs</p>
                     </a>
@@ -138,7 +138,6 @@ class Template
 
     function mainpanel()
     {
-
         echo "<div class=\"main-panel\">
         <nav class=\"navbar navbar-default\">
             <div class=\"container-fluid\">
