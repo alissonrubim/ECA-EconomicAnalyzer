@@ -15,6 +15,10 @@
 
 	if($logged){
 		require_once "classes/template.php";
+		require_once "DAO/conexao.php";
+		//Todas as DAO
+		require_once "DAO/paymentsDAO.php";
+		require_once "DAO/beneficiariesDAO.php";
 
 	    $template = new Template();
 	    $template->header();

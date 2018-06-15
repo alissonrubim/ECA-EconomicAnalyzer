@@ -1,7 +1,6 @@
 <?php
 
 require_once "conexao.php";
-require_once "models/action.php";
 
 class actionDAO
 {
