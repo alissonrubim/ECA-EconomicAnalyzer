@@ -76,6 +76,35 @@ class paymentsDAO
         }
     }
 
+    public function getValuesPerState(){
+        global $pdo;
+        $estados = array();
+        $dados = array();
+        try {
+            $statement = $pdo->prepare(" select DISTINCT s.str_uf, SUM(db_value) as total from tb_payments p
+join tb_city c
+on c.id_city = p.tb_city_id_city
+join tb_state s
+on s.id_state = c.tb_state_id_state
+WHERE p.int_month = 6
+group by s.str_uf
+order by s.str_uf");
+            if ($statement->execute()) {
+                $rs = $statement->fetchAll(PDO::FETCH_OBJ);
+                foreach ($rs as $var) {
+                    array_push($estados, $var->str_uf);
+                    array_push($dados, $var->total);
+                }
+            } else {
+                throw new PDOException("Erro: Não foi possível executar a declaração sql");
+            }
+        } catch (PDOException $erro) {
+            return "Erro: " . $erro->getMessage();
+        }
+        return array($estados, $dados);
+
+    }
+
     public function avarageLastMonth(){
         global $pdo;
         try {

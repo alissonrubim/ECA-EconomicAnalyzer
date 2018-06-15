@@ -246,7 +246,43 @@
                     </div>
                     <div class="content">
                         <div id="chartActivity" class="ct-chart"></div>
+ <script type="text/javascript">
 
+       <?php
+                            $paymentsDAO = new paymentsDAO();
+                            $dados = $paymentsDAO->getValuesPerState();
+                            
+                            echo "labelsC = [";
+                            for($i = 0; $i<sizeof($dados[0]); $i++){
+                                echo "'".($dados[0][$i])."'";
+                                if($i < sizeof($dados[0])-1)
+                                    echo ",";
+                            }    
+                            echo "];";
+
+                            echo "dataC = [";
+                            for($i = 0; $i<sizeof($dados[1]); $i++){
+                                echo $dados[1][$i];
+                                if($i < sizeof($dados[1])-1)
+                                    echo ",";
+                            }    
+                            echo "];";
+                        ?>
+                     
+
+
+                            $(document).ready(function(){
+
+                                var data = {
+                                  labels: labelsC,
+                                  series: [
+                                    dataC
+                                   ]
+                                };
+
+                                new Chartist.Bar('#chartActivity', data, null);
+                            })
+                        </script>
 
 
 
@@ -266,6 +302,3 @@
         </div>
     </div>
 </div>
-<?php
-    $template->footer();
-?>
