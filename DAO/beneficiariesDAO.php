@@ -1,9 +1,21 @@
 <?php
-
-require_once "conexao.php";
-
 class beneficiariesDAO
 {
+    public function count()
+    {
+        global $pdo;
+        try {
+            $statement = $pdo->prepare("SELECT COUNT(*) as total FROM tb_beneficiaries");
+            if ($statement->execute()) {
+                $rs = $statement->fetch(PDO::FETCH_OBJ);
+                return $rs->total;
+            } else {
+                throw new PDOException("Erro: Não foi possível executar a declaração sql");
+            }
+        } catch (PDOException $erro) {
+            return "Erro: " . $erro->getMessage();
+        }
+    }
 
     public function remover($beneficiaries)
     {

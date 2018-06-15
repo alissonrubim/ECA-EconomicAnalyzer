@@ -41,7 +41,10 @@
                             <div class="col-xs-7">
                                 <div class="numbers">
                                     <p>Payments</p>
-                                    R$0,00
+                                    R$<?php
+                                        $paymentsDAO = new paymentsDAO();
+                                        echo $paymentsDAO->getLastMonth();
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +69,10 @@
                             <div class="col-xs-7">
                                 <div class="numbers">
                                     <p>Average</p>
-                                    R$0,00
+                                    R$<?php
+                                        $paymentsDAO = new paymentsDAO();
+                                        echo $paymentsDAO->avarageLastMonth();
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +97,10 @@
                             <div class="col-xs-7">
                                 <div class="numbers">
                                     <p>Beneficiaries</p>
-                                    00
+                                    <?php
+                                        $beneficiariesDAO = new beneficiariesDAO();
+                                        echo $beneficiariesDAO->count();
+                                    ?>
                                 </div>
                             </div>
                         </div>
