@@ -8,13 +8,18 @@
 
 class user
 {
-    public $id_user, $str_username, $str_password, $str_accessprofile;
+    public $id_user, $str_username, $str_password, $str_accessprofile, $str_email;
 
     /**
      * source constructor.
      */
-    public function __construct()
+    public function __construct($id_user, $str_username, $str_password, $str_accessprofile, $str_email)
     {
+        $this->id_user = $id_user;
+        $this->str_username = $str_username;
+        $this->str_password = $str_password;
+        $this->str_accessprofile = $str_accessprofile;
+        $hits->str_email = $str_email;
     }
 
     /**
@@ -31,6 +36,22 @@ class user
     public function setIdUser($id_user)
     {
         $this->id_user = $id_user;
+    }
+
+     /**
+     * @return mixed
+     */
+    public function getIdEmail()
+    {
+        return $this->str_email;
+    }
+
+    /**
+     * @param mixed $str_email
+     */
+    public function setIdEmail($str_email)
+    {
+        $this->str_email = $str_email;
     }
 
     /**

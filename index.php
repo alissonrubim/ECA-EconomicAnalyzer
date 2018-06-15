@@ -3,9 +3,16 @@
 	
 	require_once "classes/template.php";
 	require_once "DAO/conexao.php";
+	//Todas as models
+	require_once "models/actions.php";
+	require_once "models/beneficiaries.php";
+	require_once "models/users.php";
+	require_once "models/payments.php";
+
 	//Todas as DAO
 	require_once "DAO/paymentsDAO.php";
 	require_once "DAO/beneficiariesDAO.php";
+	require_once "DAO/usersDAO.php";
 
     //verifica login
 	$allowPages = array("login");

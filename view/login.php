@@ -2,12 +2,18 @@
 	if(isset($_POST)){
 		if(!isset($_POST["username"])){
 
-		}else if(!isset($_POST["username"])){
+		}else if(!isset($_POST["password"])){
 			
 		}else {
-			$_SESSION["logged"] = true;
-			$_SESSION["accessprofile"] = "admin";
-			echo "<script>location.href='index.php'</script>";
+			$userDAO = new usersDAO();
+			$user = $userDAO->login($_POST["username"], md5($_POST["password"]));
+			if($user != null){
+				$_SESSION["logged"] = true;
+				$_SESSION["accessprofile"] = "admin";
+				echo "<script>location.href='index.php'</script>";
+			}else{
+				echo "Wrong username or password!"
+			}
 		}
 	}
 ?>
