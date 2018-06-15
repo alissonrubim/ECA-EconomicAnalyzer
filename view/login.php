@@ -12,7 +12,7 @@
 				$_SESSION["accessprofile"] = $user->getStrAccessprofile();
 				echo "<script>location.href='index.php'</script>";
 			}else{
-				echo "Wrong username or password!"
+				echo "Wrong username or password!";
 			}
 		}
 	}

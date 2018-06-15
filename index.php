@@ -4,9 +4,9 @@
 	require_once "classes/template.php";
 	require_once "DAO/conexao.php";
 	//Todas as models
-	require_once "models/actions.php";
+	require_once "models/action.php";
 	require_once "models/beneficiaries.php";
-	require_once "models/users.php";
+	require_once "models/user.php";
 	require_once "models/payments.php";
 
 	//Todas as DAO
@@ -37,7 +37,7 @@
 	    $template->sidebar();
 	    $template->mainpanel();
 
-		include "view/".$page.".php";
+		include "view/".$page;
 
 		$template->footer();
 	}else{

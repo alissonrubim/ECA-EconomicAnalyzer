@@ -97,7 +97,7 @@ class user
     /**
      * @param mixed $str_accessprofile
      */
-    public function setStrAccessprofil($str_accessprofile)
+    public function setStrAccessprofile($str_accessprofile)
     {
         $this->str_accessprofile = $str_accessprofile;
     }

@@ -117,6 +117,12 @@ class Template
                     </a>
                 </li>
                 <li class=\"active\">
+                    <a href=\"index.php?p=reports.php\">
+                        <i class=\"ti-panel\"></i>
+                        <p>Relatórios</p>
+                    </a>
+                </li>
+                <li class=\"active\">
                     <a href=\"index.php?p=files\">
                         <i class=\"ti-user\"></i>
                         <p>Files</p>
