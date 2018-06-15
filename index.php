@@ -6,7 +6,7 @@
 	//Todas as models
 	require_once "models/action.php";
 	require_once "models/beneficiaries.php";
-	require_once "models/users.php";
+	require_once "models/user.php";
 	require_once "models/payments.php";
 
 	//Todas as DAO
@@ -65,7 +65,7 @@
 	    $template->sidebar();
 	    $template->mainpanel();
 
-		include "view/".$page.".php";
+		include "view/".$page;
 
 		$template->footer();
 	}else{
