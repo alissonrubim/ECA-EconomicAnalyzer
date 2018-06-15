@@ -1,6 +1,7 @@
 <?php
 
 require_once "conexao.php";
+require_once "models/functions.php";
 
 class functionsDAO
 {
