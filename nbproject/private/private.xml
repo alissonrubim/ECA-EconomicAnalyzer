@@ -4,13 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/ECA-EconomicAnalyzer/DAO/beneficiariesDAO.php</file>
-            <file>file:/C:/xampp/htdocs/ECA-EconomicAnalyzer/DAO/subfunctions.php</file>
-            <file>file:/C:/xampp/htdocs/ECA-EconomicAnalyzer/DAO/conexao.php</file>
-            <file>file:/C:/xampp/htdocs/ECA-EconomicAnalyzer/DAO/cityDAO.php</file>
-            <file>file:/C:/xampp/htdocs/ECA-EconomicAnalyzer/DAO/stateDAO.php</file>
-            <file>file:/C:/xampp/htdocs/ECA-EconomicAnalyzer/assets/css/estilologin.css</file>
-            <file>file:/C:/xampp/htdocs/ECA-EconomicAnalyzer/DAO/programDAO.php</file>
-            <file>file:/C:/xampp/htdocs/ECA-EconomicAnalyzer/DAO/sourceDAO.php</file>
+            <file>file:/C:/xampp/htdocs/ECA-EconomicAnalyzer/reports/report_1.php</file>
+            <file>file:/C:/xampp/htdocs/ECA-EconomicAnalyzer/view/reports.php</file>
         </group>
     </open-files>
 </project-private>
