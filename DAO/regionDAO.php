@@ -1,6 +1,7 @@
 <?php
-require_once "db/conexao.php";
-require_once "classes/region.php";
+
+require_once "conexao.php";
+require_once "models/region.php";
 class regionDAO
 {
     public function delete($region)
