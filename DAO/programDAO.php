@@ -3,11 +3,9 @@
 require_once "conexao.php";
 require_once "models/programs.php";
 
+class programDAO {
 
-class programDAO
-{
-    public function remover($program)
-    {
+    public function remover($program) {
         global $pdo;
         try {
             $statement = $pdo->prepare("DELETE FROM tb_program WHERE id_program = :id");
@@ -21,9 +19,8 @@ class programDAO
             return "Erro: " . $erro->getMessage();
         }
     }
-    
-    public function salvar($program)
-    {
+
+    public function salvar($program) {
         global $pdo;
         try {
             if ($program->getIdProgram() != "") {
@@ -47,9 +44,8 @@ class programDAO
             return "Erro: " . $erro->getMessage();
         }
     }
-    
-    public function atualizar($program)
-    {
+
+    public function atualizar($program) {
         global $pdo;
         try {
             $statement = $pdo->prepare("SELECT id_program, str_cod_program, str_name_program FROM tb_program WHERE id_program = :id");
@@ -67,37 +63,36 @@ class programDAO
             return "Erro: " . $erro->getMessage();
         }
     }
-    
-    public function tabelapaginada()
-    {
-        
-        global $pdo;        
+
+    public function tabelapaginada() {
+
+        global $pdo;
         $endereco = $_SERVER ['PHP_SELF'];
-        
+
         define('QTDE_REGISTROS', 10);
         define('RANGE_PAGINAS', 2);
-        
+
         $pagina_atual = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
-        
+
         $linha_inicial = ($pagina_atual - 1) * QTDE_REGISTROS;
-        
+
         $sql = "SELECT id_program, str_cod_program, str_name_program FROM tb_program LIMIT {$linha_inicial}, " . QTDE_REGISTROS;
         $statement = $pdo->prepare($sql);
         $statement->execute();
         $dados = $statement->fetchAll(PDO::FETCH_OBJ);
-        
+
         $sqlContador = "SELECT COUNT(*) AS total_registros FROM tb_program";
         $statement = $pdo->prepare($sqlContador);
         $statement->execute();
         $valor = $statement->fetch(PDO::FETCH_OBJ);
-        
+
         $primeira_pagina = 1;
-        $ultima_pagina = ceil($valor->total_registros / QTDE_REGISTROS);        
-        $pagina_anterior = ($pagina_atual > 1) ? $pagina_atual - 1 : 0;        
-        $proxima_pagina = ($pagina_atual < $ultima_pagina) ? $pagina_atual + 1 : 0;        
-        $range_inicial = (($pagina_atual - RANGE_PAGINAS) >= 1) ? $pagina_atual - RANGE_PAGINAS : 1;        
-        $range_final = (($pagina_atual + RANGE_PAGINAS) <= $ultima_pagina) ? $pagina_atual + RANGE_PAGINAS : $ultima_pagina;        
-        $exibir_botao_inicio = ($range_inicial < $pagina_atual) ? 'mostrar' : 'esconder';        
+        $ultima_pagina = ceil($valor->total_registros / QTDE_REGISTROS);
+        $pagina_anterior = ($pagina_atual > 1) ? $pagina_atual - 1 : 0;
+        $proxima_pagina = ($pagina_atual < $ultima_pagina) ? $pagina_atual + 1 : 0;
+        $range_inicial = (($pagina_atual - RANGE_PAGINAS) >= 1) ? $pagina_atual - RANGE_PAGINAS : 1;
+        $range_final = (($pagina_atual + RANGE_PAGINAS) <= $ultima_pagina) ? $pagina_atual + RANGE_PAGINAS : $ultima_pagina;
+        $exibir_botao_inicio = ($range_inicial < $pagina_atual) ? 'mostrar' : 'esconder';
         $exibir_botao_final = ($range_final > $pagina_atual) ? 'mostrar' : 'esconder';
 
         if (!empty($dados)):
@@ -113,7 +108,7 @@ class programDAO
         </thead>
         <tbody>";
             foreach ($dados as $var):
-        echo "<tr>            
+                echo "<tr>            
         <td>$var->id_file</td>
         <td>$var->str_cod_program</td>
         <td>$var->str_name_program</td>        
@@ -130,7 +125,7 @@ class programDAO
        <a class='box-navegacao $exibir_botao_inicio' href='$endereco?p=city&page=$pagina_anterior' title='Página Anterior'>Anterior</a>
 ";
 
-            
+
             for ($i = $range_inicial; $i <= $range_final; $i++):
                 $destaque = ($i == $pagina_atual) ? 'destaque' : '';
                 echo "<a class='box-numero $destaque' href='$endereco?p=city&page=$i'>$i</a>";
@@ -143,6 +138,6 @@ class programDAO
             echo "<p class='bg-danger'>Nenhum registro foi encontrado!</p>
      ";
         endif;
-
     }
+
 }
