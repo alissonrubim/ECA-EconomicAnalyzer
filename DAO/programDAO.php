@@ -106,7 +106,7 @@ class programDAO
         <thead>
         <tr class='active'>
         <th>ID</th>
-        <th>Código Programa Arquiv Região</th>  
+        <th>Código Programa</th>  
         <th>Nome Programa</th>        
         <th colspan='2'>Ações</th>
         </tr>
