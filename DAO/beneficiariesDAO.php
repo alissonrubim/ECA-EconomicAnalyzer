@@ -17,6 +17,34 @@ class beneficiariesDAO
         }
     }
 
+    public function totalPerMonth(){
+        global $pdo;
+        $estados = array();
+        $dados = array();
+        try {
+            $statement = $pdo->prepare("select DISTINCT s.str_name, count(*) as total from tb_payments p
+join tb_city c
+on c.id_city = p.tb_city_id_city
+join tb_state s
+on s.id_state = c.tb_state_id_state
+WHERE p.int_month = 5
+group by s.str_name
+order by s.str_name");
+            if ($statement->execute()) {
+                $rs = $statement->fetchAll(PDO::FETCH_OBJ);
+                foreach ($rs as $var) {
+                    array_push($estados,  $var->str_name);
+                    array_push($dados,  $var->total);
+                }
+            } else {
+                throw new PDOException("Erro: Não foi possível executar a declaração sql");
+            }
+        } catch (PDOException $erro) {
+            return "Erro: " . $erro->getMessage();
+        }
+        return array($estados, $dados);
+    }
+
     public function remover($beneficiaries)
     {
         global $pdo;

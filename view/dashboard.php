@@ -148,6 +148,26 @@
                     </div>
                     <div class="content">
                         <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+                                <?php
+                                    $beneficiariesDAO = new beneficiariesDAO();
+                                    $dados = $beneficiariesDAO->totalPerMonth();
+                                    
+                                    echo $dados;    
+                                ?>
+
+                        <script type="text/javascript">
+                            $(document).ready(function(){
+
+                                var data = {
+                                  labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+                                  series: [
+                                    [5, 22, 43, 2, 23, 2]
+                                  ]
+                                };
+
+                                new Chartist.Bar('#chartPreferences', data, null);
+                            })
+                        </script>
 
                         <div class="footer">
                             <div class="chart-legend">
@@ -171,6 +191,9 @@
                     </div>
                     <div class="content">
                         <div id="chartActivity" class="ct-chart"></div>
+
+
+
 
                         <div class="footer">
                             <div class="chart-legend">
