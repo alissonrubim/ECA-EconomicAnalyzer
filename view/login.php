@@ -1,4 +1,5 @@
 <?php
+	$_SESSION["logged"] = false;
 	if(isset($_POST)){
 		if(!isset($_POST["username"])){
 
@@ -7,12 +8,12 @@
 		}else {
 			$userDAO = new usersDAO();
 			$user = $userDAO->login($_POST["username"], md5($_POST["password"]));
-			if($user != null){
+			if($user != null && $user->getIdUser() != null){
 				$_SESSION["logged"] = true;
 				$_SESSION["accessprofile"] = $user->getStrAccessprofile();
 				echo "<script>location.href='index.php'</script>";
 			}else{
-				echo "Wrong username or password!"
+				echo "Wrong username or password!";
 			}
 		}
 	}

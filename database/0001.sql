@@ -1,4 +1,4 @@
-CRAEATE TABLE tb_users(
+CREATE TABLE tb_users(
 	id_user INT NOT NULL AUTO_INCREMENT,
 	str_username varchar(30) not null,
 	str_password varchar(255) not null,

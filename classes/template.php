@@ -116,18 +116,19 @@ class Template
                         <p>City</p>
                     </a>
                 </li>
-                <li class=\"active\">
+                <!--<li class=\"active\">
                     <a href=\"index.php?p=files\">
                         <i class=\"ti-user\"></i>
                         <p>Files</p>
                     </a>
-                </li>
+                </li>-->
                 ";
+
         if($_SESSION["accessprofile"] == "admin"){
-                echo "<li>
-                    <a href=\"index.php?p=programs\">
-                        <i class=\"ti-view-list-alt\"></i>
-                        <p>Programs</p>
+                echo "<li class=\"active\">
+                    <a href=\"index.php?p=users\">
+                        <i class=\"ti-user\"></i>
+                        <p>Users</p>
                     </a>
                 </li>";
         }

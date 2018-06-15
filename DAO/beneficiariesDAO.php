@@ -27,7 +27,7 @@ join tb_city c
 on c.id_city = p.tb_city_id_city
 join tb_state s
 on s.id_state = c.tb_state_id_state
-WHERE p.int_month = 5
+WHERE p.int_month = 6
 group by s.str_name
 order by s.str_name");
             if ($statement->execute()) {
