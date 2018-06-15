@@ -108,7 +108,7 @@ class filesDAO
         <thead>
         <tr class='active'>
         <th>ID</th>
-        <th>Nome Arquiv Região</th>  
+        <th>Nome Arquivo</th>  
         <th>Mês</th>
         <th>Ano</th>
         <th colspan='2'>Ações</th>
