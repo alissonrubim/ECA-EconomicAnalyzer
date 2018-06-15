@@ -38,6 +38,15 @@ class Template
 <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
 <link href='assets/css/themify-icons.css' rel='stylesheet'>
 
+    <!--   Core JS Files   -->
+    <script src=\"assets/js/jquery-1.10.2.js\" type=\"text/javascript\"></script>
+    <script src=\"assets/js/bootstrap.min.js\" type=\"text/javascript\"></script>
+
+    <!--  Checkbox, Radio & Switch Plugins -->
+    <script src=\"assets/js/bootstrap-checkbox-radio.js\"></script>
+
+    <script src=\"assets/js/jquery-1.10.2.min.js\"></script>   
+    <script src=\"assets/js/chartist.min.js\"></script>    
 </head>
 <body>";
 
@@ -67,12 +76,6 @@ class Template
 </div>
 </body>
 
-    <!--   Core JS Files   -->
-    <script src=\"assets/js/jquery-1.10.2.js\" type=\"text/javascript\"></script>
-	<script src=\"assets/js/bootstrap.min.js\" type=\"text/javascript\"></script>
-
-	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src=\"assets/js/bootstrap-checkbox-radio.js\"></script>
 
 </html>";
 
