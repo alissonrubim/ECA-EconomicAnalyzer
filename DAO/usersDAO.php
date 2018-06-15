@@ -10,7 +10,7 @@
                 $statement->bindValue(":password", $password);
                 if ($statement->execute()) {
                     $rs = $statement->fetch(PDO::FETCH_OBJ);
-                    $userResult = new user($rs->id_user, $rs->str_username, $rs->str_password, $rs->str_accessprofile, $rs->str_email);
+                    $userResult = new users($rs->id_user, $rs->str_username, $rs->str_password, $rs->str_accessprofile, $rs->str_email);
                     return $userResult;
                 } else {
                     throw new PDOException("Erro: Não foi possível executar a declaração sql");
