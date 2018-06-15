@@ -8,7 +8,7 @@
 
 class state
 {
-    private $id_state, $str_uf, $str_name, $tb_region_id_region;
+    public $id_state, $str_uf, $str_name, $tb_region_id_region;
 
     /**
      * state constructor.

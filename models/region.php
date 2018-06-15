@@ -8,7 +8,7 @@
 
 class region
 {
-    private $id_region, $str_name_region;
+    public $id_region, $str_name_region;
 
     /**
      * region constructor.

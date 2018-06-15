@@ -8,7 +8,7 @@
 
 class subfunctions
 {
-    private $id_subfunction, $str_cod_subfunction, $str_name_subfunction;
+    public $id_subfunction, $str_cod_subfunction, $str_name_subfunction;
 
     /**
      * subfunctions constructor.

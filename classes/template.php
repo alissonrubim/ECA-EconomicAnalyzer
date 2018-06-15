@@ -140,6 +140,12 @@ class Template
                         <p>Reports</p>
                     </a>
                 </li>
+                <li class=\"active\">
+                    <a href=\"index.php?p=logout\">
+                        <i class=\"ti-user\"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>";

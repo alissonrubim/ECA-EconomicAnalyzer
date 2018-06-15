@@ -8,7 +8,7 @@
 
 class files
 {
-    private $id_file, $str_name_file, $str_month, $str_year;
+    public $id_file, $str_name_file, $str_month, $str_year;
 
     /**
      * files constructor.

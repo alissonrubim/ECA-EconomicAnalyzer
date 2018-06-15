@@ -8,7 +8,7 @@
 
 class program
 {
-    private $id_program, $str_cod_program, $str_name_program;
+    public $id_program, $str_cod_program, $str_name_program;
 
     /**
      * program constructor.

@@ -8,7 +8,7 @@
 
 class city
 {
-    private $id_city, $str_name_city, $str_cod_siafi_city, $tb_state_id_state;
+    public $id_city, $str_name_city, $str_cod_siafi_city, $tb_state_id_state;
 
     /**
      * city constructor.

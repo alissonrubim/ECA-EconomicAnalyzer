@@ -8,7 +8,7 @@
 
 class payments
 {
-    private $id_payment, $tb_city_id_city, $tb_functions_id_function, $tb_subfunctions_id_subfunction, $tb_program_id_program,
+    public $id_payment, $tb_city_id_city, $tb_functions_id_function, $tb_subfunctions_id_subfunction, $tb_program_id_program,
     $tb_action_id_action, $tb_beneficiaries_id_beneficiaries, $tb_source_id_source, $tb_files_id_file, $int_month, $int_year, $db_value;
 
     /**

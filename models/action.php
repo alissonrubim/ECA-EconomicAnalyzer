@@ -8,7 +8,7 @@
 
 class action
 {
-    private $id_action, $str_cod_action, $str_name_action;
+    public $id_action, $str_cod_action, $str_name_action;
 
     /**
      * action constructor.

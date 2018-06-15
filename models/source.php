@@ -8,7 +8,7 @@
 
 class source
 {
-    private $id_source, $str_goal, $str_origin, $str_periodicity;
+    public $id_source, $str_goal, $str_origin, $str_periodicity;
 
     /**
      * source constructor.

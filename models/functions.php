@@ -8,7 +8,7 @@
 
 class functions
 {
-    private $id_function, $str_cod_function, $str_name_function;
+    public $id_function, $str_cod_function, $str_name_function;
 
     /**
      * functions constructor.
